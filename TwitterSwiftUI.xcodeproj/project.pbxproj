@@ -18,6 +18,7 @@
 		D575D8C22A6D0CCE0036BE7D /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575D8C12A6D0CCE0036BE7D /* ExploreView.swift */; };
 		D575D8C42A6D0CEA0036BE7D /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575D8C32A6D0CEA0036BE7D /* NotificationsView.swift */; };
 		D575D8C62A6D0CFB0036BE7D /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575D8C52A6D0CFB0036BE7D /* MessagesView.swift */; };
+		D5EC77002A6ECD54006B9114 /* TweetFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC76FF2A6ECD54006B9114 /* TweetFilterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D575D8C12A6D0CCE0036BE7D /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		D575D8C32A6D0CEA0036BE7D /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		D575D8C52A6D0CFB0036BE7D /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		D5EC76FF2A6ECD54006B9114 /* TweetFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetFilterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		D531FA872A6EC04F00BA4E03 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D5EC76FF2A6ECD54006B9114 /* TweetFilterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				D531FA892A6EC06000BA4E03 /* ProfileView.swift in Sources */,
 				D575D8A22A6C34D00036BE7D /* ContentView.swift in Sources */,
 				D575D8B92A6D037F0036BE7D /* TweetRowView.swift in Sources */,
+				D5EC77002A6ECD54006B9114 /* TweetFilterViewModel.swift in Sources */,
 				D575D8B62A6D020B0036BE7D /* FeedView.swift in Sources */,
 				D575D8A02A6C34D00036BE7D /* TwitterSwiftUIApp.swift in Sources */,
 				D575D8C22A6D0CCE0036BE7D /* ExploreView.swift in Sources */,
