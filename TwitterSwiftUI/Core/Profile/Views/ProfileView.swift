@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var selectedFilter: TweetFilterViewModel = .tweets
+    @Environment(\.presentationMode) var mode
     @Namespace var animation
     
     var body: some View {
@@ -21,39 +22,15 @@ struct ProfileView: View {
             
             userInfoDetails
             
-            HStack {
-                ForEach(TweetFilterViewModel.allCases, id: \.rawValue) { item in
-                    VStack{
-                        Text(item.title)
-                            .font(.subheadline)
-                            .fontWeight(selectedFilter == item ? .semibold : .regular)
-                            .foregroundColor(selectedFilter == item ? .black : .gray)
-                        
-                        if selectedFilter == item {
-                            Capsule()
-                                .foregroundColor(Color(.systemBlue))
-                                .frame(height: 3)
-                                .matchedGeometryEffect(id: "filter", in: animation)
-                        } else {
-                            Capsule()
-                                .foregroundColor(Color(.clear))
-                                .frame(height: 3)
-                        }
-                        
-                    }
-                    .onTapGesture {
-                        withAnimation(.easeInOut) {
-                            self.selectedFilter = item
-                        }
-                    }
-                }
-            }
-            .overlay(Divider().offset(x: 0, y: 16))
+            tweetFilterVar
+            
+            tweetsView
                         
             Spacer()
             
             
         }
+        .ignoresSafeArea()
     }
 }
 
@@ -73,7 +50,7 @@ extension ProfileView {
             
             VStack {
                 Button{
-                    
+                    mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "arrow.left")
                         .resizable()
@@ -88,7 +65,7 @@ extension ProfileView {
                 .offset(y: 30)
             }
         }
-        .frame(height: 120)
+        .frame(height: 150)
     }
     
     var actionButtons: some View {
@@ -154,31 +131,54 @@ extension ProfileView {
             .font(.caption)
             .foregroundColor(.gray)
             
-            HStack(spacing: 24){
-                HStack(spacing: 4){
-                    Text("807")
-                        .font(.subheadline)
-                        .bold()
-                    Text("Following")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                
-                HStack(spacing: 4){
-                    Text("69M")
-                        .font(.subheadline)
-                        .bold()
-                    Text("Followers")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                
-            }
-            .padding(.vertical)
+            UserStatsView()
+                .padding(.vertical)
             
         }
         .padding(.horizontal)
 
+    }
+    
+    var tweetFilterVar: some View {
+        HStack {
+            ForEach(TweetFilterViewModel.allCases, id: \.rawValue) { item in
+                VStack{
+                    Text(item.title)
+                        .font(.subheadline)
+                        .fontWeight(selectedFilter == item ? .semibold : .regular)
+                        .foregroundColor(selectedFilter == item ? .black : .gray)
+                    
+                    if selectedFilter == item {
+                        Capsule()
+                            .foregroundColor(Color(.systemBlue))
+                            .frame(height: 3)
+                            .matchedGeometryEffect(id: "filter", in: animation)
+                    } else {
+                        Capsule()
+                            .foregroundColor(Color(.clear))
+                            .frame(height: 3)
+                    }
+                    
+                }
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        self.selectedFilter = item
+                    }
+                }
+            }
+        }
+        .overlay(Divider().offset(x: 0, y: 16))
+    }
+    
+    var tweetsView: some View {
+        ScrollView {
+            LazyVStack{
+                ForEach(0...9, id: \.self) { _ in
+                    TweetRowView()
+                        .padding()
+                }
+            }
+        }
     }
     
 }
