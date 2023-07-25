@@ -8,8 +8,44 @@
 import SwiftUI
 
 struct NewTweetView: View {
+    @State private var caption: String = ""
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            HStack{
+               Button {
+                   print("dismiss")
+                   presentationMode.wrappedValue.dismiss()
+            } label: {
+                    Text("Cancel")
+                    .foregroundColor(Color(.systemBlue))
+                }
+                
+                Spacer()
+                
+                Button {
+                    print("upload")
+             } label: {
+                     Text("Tweet")
+                     .bold()
+                     .padding(.horizontal)
+                     .padding(.vertical, 8)
+                     .background(Color(.systemBlue))
+                     .foregroundColor(Color(.white))
+                     .clipShape(Capsule())
+                 }
+            }
+            .padding()
+            
+            HStack(alignment: .top){
+                Circle()
+                    .frame(width: 64, height: 64)
+                
+                TextArea("What's happening?", text: $caption)
+            }
+            .padding()
+        }
     }
 }
 

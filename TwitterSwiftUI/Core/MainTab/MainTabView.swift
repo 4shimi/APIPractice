@@ -10,6 +10,9 @@ import SwiftUI
 struct MainTabView: View {
     @State private var selectedIndex: Int = 0
     
+    let numTabs = 4
+    let minDragTranslationForSwipe: CGFloat = 50
+    
     var body: some View {
         TabView(selection: $selectedIndex) {
             FeedView()
@@ -19,6 +22,9 @@ struct MainTabView: View {
                 .tabItem{
                     Image(systemName: "house")
                 }.tag(0)
+                .highPriorityGesture(DragGesture().onEnded({
+                                self.handleSwipe(translation: $0.translation.width)
+                            }))
             
             ExploreView()
                 .onTapGesture {
@@ -27,6 +33,9 @@ struct MainTabView: View {
                 .tabItem{
                     Image(systemName: "magnifyingglass")
                 }.tag(1)
+                .highPriorityGesture(DragGesture().onEnded({
+                                self.handleSwipe(translation: $0.translation.width)
+                            }))
             
             NotificationsView()
                 .onTapGesture {
@@ -35,6 +44,9 @@ struct MainTabView: View {
                 .tabItem{
                     Image(systemName: "bell")
                 }.tag(2)
+                .highPriorityGesture(DragGesture().onEnded({
+                                self.handleSwipe(translation: $0.translation.width)
+                            }))
             
             MessagesView()
                 .onTapGesture {
@@ -43,9 +55,19 @@ struct MainTabView: View {
                 .tabItem{
                     Image(systemName: "envelope")
                 }.tag(3)
-            
-            
+                .highPriorityGesture(DragGesture().onEnded({
+                                self.handleSwipe(translation: $0.translation.width)
+                            }))
+
         }
+    }
+    
+    private func handleSwipe(translation: CGFloat) {
+        if translation > minDragTranslationForSwipe && selectedIndex > 0 {
+            selectedIndex -= 1
+        } else  if translation < -minDragTranslationForSwipe && selectedIndex < numTabs - 1 {
+            selectedIndex += 1
+        } else { return }
     }
 }
 
