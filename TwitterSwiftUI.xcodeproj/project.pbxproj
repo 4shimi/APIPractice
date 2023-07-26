@@ -37,6 +37,7 @@
 		D5EC77342A70136E006B9114 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D5EC77332A70136E006B9114 /* FirebaseFirestoreSwift */; };
 		D5EC77362A70136E006B9114 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D5EC77352A70136E006B9114 /* FirebaseStorage */; };
 		D5EC77382A701678006B9114 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC77372A701678006B9114 /* AuthViewModel.swift */; };
+		D5EC775B2A7177F5006B9114 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC775A2A7177F5006B9114 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		D5EC772A2A700C62006B9114 /* AuthenticationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHeaderView.swift; sourceTree = "<group>"; };
 		D5EC772C2A7012D1006B9114 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D5EC77372A701678006B9114 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		D5EC775A2A7177F5006B9114 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				D5EC77372A701678006B9114 /* AuthViewModel.swift */,
+				D5EC775A2A7177F5006B9114 /* User.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				D5EC77382A701678006B9114 /* AuthViewModel.swift in Sources */,
 				D5EC77262A6FFC54006B9114 /* RoundedShape.swift in Sources */,
 				D5EC77052A6F4D20006B9114 /* UserRowView.swift in Sources */,
+				D5EC775B2A7177F5006B9114 /* User.swift in Sources */,
 				D575D8BC2A6D0B8A0036BE7D /* MainTabView.swift in Sources */,
 				D575D8C42A6D0CEA0036BE7D /* NotificationsView.swift in Sources */,
 				D5EC77122A6F5483006B9114 /* UserStatsView.swift in Sources */,

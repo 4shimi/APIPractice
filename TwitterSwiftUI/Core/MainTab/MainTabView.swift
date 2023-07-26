@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @State private var selectedIndex: Int = 0
+
     
     let numTabs = 4
     let minDragTranslationForSwipe: CGFloat = 50
@@ -60,7 +61,9 @@ struct MainTabView: View {
                             }))
 
         }
+//        .tabViewStyle(.page)
     }
+
     
     private func handleSwipe(translation: CGFloat) {
         if translation > minDragTranslationForSwipe && selectedIndex > 0 {

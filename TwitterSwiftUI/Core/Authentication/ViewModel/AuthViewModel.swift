@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
@@ -14,18 +15,30 @@ class AuthViewModel: ObservableObject {
     init() {
         self.userSession = Auth.auth().currentUser
         
-        print("DEBUG: User session is \(self.userSession)")
+        print("DEBUG: User session is \(self.userSession?.uid)")
     }
     
     func login(withEmail email: String, password: String) {
-        print("DEBUG : Login with email \(email)")
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG: Failed to sign in with error \(error.localizedDescription)")
+                return
+            }
+            
+            guard let user = result?.user else { return }
+            self.userSession = user
+            
+            print("DEBUG : Login with email \(email)")
+        }
+        
+        
     }
     
     func register(withEmail email: String, password: String, fullname: String, username: String){
-        print("DEBug : Login with email \(email)")
+        print("DEBUG : Login with email \(email)")
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
-                print("DEBuG: Failed to register with error \(error.localizedDescription)")
+                print("DEBUG: Failed to register with error \(error.localizedDescription)")
                 return
             }
             
@@ -46,5 +59,14 @@ class AuthViewModel: ObservableObject {
                     print("DEBUG: Did upload user data")
                 }
         }
+    }
+    
+    func signOut() {
+        // sets user session to nil so we show login view
+        userSession = nil
+        
+        //signs user out on server
+        try? Auth.auth().signOut()
+        
     }
 }
